@@ -5,7 +5,7 @@ export const donationsController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const candidates = await db.candidateStore.find();
-      return h.view("donate", {
+      return h.view("Donate", {
         title: "Make a Donation",
         user: loggedInUser,
         candidates: candidates,
@@ -29,7 +29,7 @@ export const donationsController = {
 
         return h.redirect("/donate");
       } catch (err) {
-        return h.view("main", { errors: [{ message: err.message }] });
+        return h.view("Main", { errors: [{ message: err.message }] });
       }
     },
   },
@@ -37,7 +37,7 @@ export const donationsController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials;
       const donations = await db.donationStore.find();
-      return h.view("report", {
+      return h.view("Report", {
         title: "Report",
         user: loggedInUser,
         donations: donations,
