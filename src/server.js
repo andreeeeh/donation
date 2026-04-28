@@ -35,7 +35,7 @@ async function initPlugins(server) {
     path: "./views",
     layoutPath: "./views",
     partialsPath: "./views/partials",
-    layout: true,
+    layout: "Layout",
     isCached: false,
   });
 }
