@@ -2,6 +2,7 @@ import { accountsController } from "./controllers/accounts-controller.js";
 import { donationsController } from "./controllers/donations-controller.js";
 import path from "path";
 import { fileURLToPath } from "url";
+import os from "os";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -17,6 +18,15 @@ export const webRoutes = [
   { method: "GET", path: "/donate", config: donationsController.index },
   { method: "POST", path: "/donate", config: donationsController.donate },
   { method: "GET", path: "/report", config: donationsController.report },
+
+  {
+    method: "GET",
+    path: "/testlb",
+    handler: function (request, h) {
+      return "Server hostname: " + os.hostname();
+    },
+    options: { auth: false },
+  },
 
   {
     method: "GET",
